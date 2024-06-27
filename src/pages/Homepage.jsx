@@ -97,7 +97,7 @@ const Homepage = () => {
                 className="flex-shrink-0 flex items-center"
               >
                 <FaBook className="h-8 w-8 text-indigo-600" />
-                <span className="ml-2 text-2xl font-semibold text-indigo-600">LexiLearn</span>
+                <span className="ml-2 text-2xl font-semibold text-indigo-600">LexiLearn</span> &nbsp; &nbsp; <span className='bg-blue-500 font-md text-xl px-3 rounded-md text-white'>Beta</span> 
               </motion.div>
             </div>
             <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
