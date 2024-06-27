@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import {  FaEye, FaEyeSlash } from 'react-icons/fa';
 import { FaGoogle, FaGithub, FaBook } from 'react-icons/fa';
+import { app } from '../../firebase/Firebase';
+import {getAuth, createUserWithEmailAndPassword} from "firebase/auth"
+import { toast } from 'react-toastify';
 
 const RegistrationForm = () => {
   const [fullName, setFullName] = useState('');
@@ -10,7 +13,18 @@ const RegistrationForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Registration submitted with:', { fullName, email, password });
+    const auth = getAuth(app)
+    createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      toast.success(`Welcome ${user.email}`);
+    }
+    )
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      toast.error(errorMessage);
+    });
   };
 
   return (

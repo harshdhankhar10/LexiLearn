@@ -1,17 +1,30 @@
 import React, { useState } from 'react';
 import { FaGoogle, FaGithub, FaBook } from 'react-icons/fa';
-
+import { app } from '../../firebase/Firebase';
+import {getAuth, signInWithEmailAndPassword} from "firebase/auth"
+import { toast } from 'react-toastify';
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Login submitted with:', { email, password });
+    const auth = getAuth(app);
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        toast.success(`Welcome back ${user.email}`);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        toast.error(errorMessage);
+      });
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-teal-100 to-blue-200 p-4">
+
       <div className="max-w-md w-full space-y-8 bg-white p-10 rounded-xl shadow-lg transform transition duration-500 ">
         <div className="text-center">
           <FaBook className="mx-auto h-12 w-auto text-teal-600" />
