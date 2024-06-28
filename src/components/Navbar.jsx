@@ -1,10 +1,20 @@
 // src/components/Navbar.js
-import React from 'react';
+import React, { useEffect,useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaBook, FaBars, FaTimes } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const Navbar = ({ isMenuOpen, toggleMenu }) => {
+  const userInfo = localStorage.getItem("userInfo")
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false)
+
+  useEffect(() => {
+    if(userInfo){
+      setIsUserLoggedIn(true)
+    }
+  }, [userInfo])
+
+
   return (
     <>
       <nav className="bg-white shadow-md sticky top-0 z-50">
@@ -34,12 +44,17 @@ const Navbar = ({ isMenuOpen, toggleMenu }) => {
               <Link to="/blog" className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
                 Blog
               </Link>
-              <Link to="/login" className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-                Login
-              </Link>
-              <Link to="/register" className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-                Sign up
-              </Link>
+
+              {isUserLoggedIn ? (
+                <Link to="/dashboard" className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                  Dashboard
+                </Link>
+              ) : (
+                <Link to="/login" className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                  Login
+                </Link>
+              )}
+
             </div>
             
             <div className="flex items-center">

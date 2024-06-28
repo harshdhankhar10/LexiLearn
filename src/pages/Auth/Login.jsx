@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { FaGoogle, FaGithub, FaBook } from 'react-icons/fa';
 import { app } from '../../firebase/Firebase';
-import {getAuth, signInWithEmailAndPassword} from "firebase/auth"
+import {getAuth, signInWithEmailAndPassword, signInWithPopup,GoogleAuthProvider} from "firebase/auth"
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const navigate = useNavigate()
   const handleSubmit = (e) => {
     e.preventDefault();
     const auth = getAuth(app);
@@ -14,6 +15,7 @@ const LoginForm = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         toast.success(`Welcome back ${user.email}`);
+        navigate("/dashboard")
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -21,6 +23,21 @@ const LoginForm = () => {
         toast.error(errorMessage);
       });
   };
+  const loginWithGoogle = ()=>{
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+    .then((result) => {
+      const user = result.user;
+      toast.success(`Welcome back ${user.displayName}`);
+      localStorage.setItem("userInfo", JSON.stringify(user))
+      navigate("/dashboard")
+    }).catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      toast.error(errorMessage);
+    });
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-teal-100 to-blue-200 p-4">
@@ -104,12 +121,12 @@ const LoginForm = () => {
           <div className="mt-6 grid grid-cols-2 gap-3">
             <div>
               
-                <a href="#"
+                <button onClick={loginWithGoogle}
                 className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 transition duration-150 ease-in-out"
               >
                 <FaGoogle className="w-5 h-5 text-red-500" /> 
                 <span className="sr-only">Sign in with Google</span>
-              </a>
+              </button>
             </div>
             <div>
               
