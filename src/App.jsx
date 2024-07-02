@@ -13,8 +13,11 @@ import PersonalNotes from './pages/Dashboard/User/PersonalNotes'
 import FavouriteList from './pages/Dashboard/User/FavouriteList'
 import Setting from './pages/Dashboard/User/Setting'
 import DashPage from './pages/Dashboard/User/DashPage'
-
-
+import SavedWords from './pages/Dashboard/User/SavedWords'
+import SearchHistory from './pages/Dashboard/User/SearchHistory'
+import LearningProgress from './pages/Dashboard/User/LearningProgress'
+import Notifications from './pages/Dashboard/User/Notifications'
+import HelpSupport from './pages/Dashboard/User/HelpSupport'
 // Games
 import WordSearch from './pages/Dashboard/User/Games/WordSearch'
 function App() {
@@ -31,11 +34,18 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/dashboard" element={<DashPage />} />
         <Route path="/dashboard" element={<Sidebar />}>
-          {/* <Route path="/dashboard" element={<MainDashboard />} > */}
-          <Route path="profile" element={<UserProfile />} />
-          <Route path="notes" element={<PersonalNotes />} />
-          <Route path="favorite-lists" element={<FavouriteList />} />
-          <Route path="setting" element={<Setting />} />
+                <Route path="profile" element={<UserProfile />} />
+                <Route path="notes" element={<PersonalNotes />} />
+                <Route path="favorite-lists" element={<FavouriteList />} />
+                <Route path="setting" element={<Setting />} />
+                <Route path="saved-words" element={<SavedWords />} />
+                <Route path="search-history" element={<SearchHistory />} />
+                <Route path="learning-progress" element={<LearningProgress />} />
+                <Route path="notifications" element={<Notifications />} />
+                <Route path="help" element={<HelpSupport />} />
+
+               
+
           <Route path="games/word-search" element={<WordSearch />} />
         </Route>
         

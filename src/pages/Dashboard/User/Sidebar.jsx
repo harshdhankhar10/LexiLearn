@@ -37,16 +37,14 @@ const Sidebar = () => {
   const menuItems = [
     { icon: <FaHome size={20} />, text: 'Home', to: '/' },
     { icon: <FaUser size={20} />, text: 'Profile', to: '/dashboard/profile' },
-    { icon: <FaBookmark size={20} />, text: 'Saved Words', to: '/saved-words' },
-    { icon: <FaHistory size={20} />, text: 'Search History', to: '/search-history' },
+    { icon: <FaBookmark size={20} />, text: 'Saved Words', to: '/dashboard/saved-words' },
+    { icon: <FaHistory size={20} />, text: 'Search History', to: '/dashboard/search-history' },
     { icon: <FaStickyNote size={20} />, text: 'Personal Notes', to: '/dashboard/notes' },
     { icon: <FaStar size={20} />, text: 'Favorite Lists', to: '/dashboard/favorite-lists' },
-    { icon: <FaChartLine size={20} />, text: 'Learning Progress', to: '/learning-progress' },
+    { icon: <FaChartLine size={20} />, text: 'Learning Progress', to: '/dashboard/learning-progress' },
     { icon: <FaGamepad size={20} />, text: 'Quizzes and Games', to: '/dashboard/games/word-search' },
-    { icon: <FaUsers size={20} />, text: 'Community Contributions', to: '/community' },
     { icon: <FaCog size={20} />, text: 'Settings', to: '/dashboard/setting' },
-    { icon: <FaBell size={20} />, text: 'Notifications', to: '/notifications' },
-    { icon: <FaQuestionCircle size={20} />, text: 'Help/Support', to: '/help' },
+    { icon: <FaQuestionCircle size={20} />, text: 'Help/Support', to: '/dashboard/help' },
   ];
 
   return (
