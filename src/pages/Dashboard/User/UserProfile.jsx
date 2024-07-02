@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaUser, FaEnvelope, FaPen, FaLock, FaBookmark, FaHistory, FaStar, FaChartLine, FaMedal, FaCog } from 'react-icons/fa';
+import { json } from 'react-router-dom';
+
+
+const userInfo = localStorage.getItem("userInfo")
 
 const ProfilePage = () => {
+  const [userData, setUserData] = useState(JSON.parse(userInfo))
+  console.log(userData)
   const [user, setUser] = useState({
     username: 'LanguageLearner123',
     email: 'learner@example.com',
@@ -30,7 +36,7 @@ const ProfilePage = () => {
       ></div>
     </div>
   );
-
+  
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-100 to-purple-100 py-12 px-4 sm:px-6 lg:px-8">
       <motion.div
@@ -41,14 +47,14 @@ const ProfilePage = () => {
       >
         <div className="md:flex">
           <div className="md:flex-shrink-0">
-            <img className="h-48 w-full object-cover md:w-48" src={user.profilePicture} alt={user.username} />
+            <img className="h-48 w-full object-cover md:w-48" src={userData.photoURL} alt={userData.displayName} />
           </div>
           <div className="p-8 w-full">
             <div className="flex justify-between items-start">
               <div>
-                <h1 className="text-3xl font-bold text-indigo-700">{user.username}</h1>
+                <h1 className="text-3xl font-bold text-indigo-700">{userData.displayName}</h1>
                 <p className="mt-2 text-gray-600 flex items-center">
-                  <FaEnvelope className="mr-2" /> {user.email}
+                  <FaEnvelope className="mr-2" /> {userData.email}
                 </p>
               </div>
               <motion.button

@@ -8,21 +8,21 @@ const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate()
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const auth = getAuth(app);
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        toast.success(`Welcome back ${user.email}`);
-        navigate("/dashboard")
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        toast.error(errorMessage);
-      });
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const auth = getAuth(app);
+  //   signInWithEmailAndPassword(auth, email, password)
+  //     .then((userCredential) => {
+  //       const user = userCredential.user;
+  //       toast.success(`Welcome back ${user.email}`);
+  //       navigate("/dashboard")
+  //     })
+  //     .catch((error) => {
+  //       const errorCode = error.code;
+  //       const errorMessage = error.message;
+  //       toast.error(errorMessage);
+  //     });
+  // };
   const loginWithGoogle = ()=>{
     const auth = getAuth(app);
     const provider = new GoogleAuthProvider();
@@ -48,9 +48,9 @@ const LoginForm = () => {
           <h2 className="mt-6 text-3xl font-extrabold text-gray-900">LexiLearn</h2>
           <p className="mt-2 text-sm text-gray-600">Sign in to your account</p>
         </div>
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-          <div className="rounded-md shadow-sm -space-y-px flex flex-col gap-3">
-            <div>
+        {/* <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+          <div className="rounded-md shadow-sm -space-y-px flex flex-col gap-3"> */}
+            {/* <div>
               <input
                 id="email-address"
                 name="email"
@@ -62,8 +62,8 @@ const LoginForm = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-            </div>
-            <div>
+            </div> */}
+            {/* <div>
               <input
                 id="password"
                 name="password"
@@ -75,11 +75,11 @@ const LoginForm = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-            </div>
-          </div>
+            </div> */}
+          {/* </div> */}
 
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
+          {/* <div className="flex items-center justify-between"> */}
+            {/* <div className="flex items-center">
               <input
                 id="remember-me"
                 name="remember-me"
@@ -89,13 +89,13 @@ const LoginForm = () => {
               <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
                 Remember me
               </label>
-            </div>
+            </div> */}
 
-            <div className="text-sm">
+            {/* <div className="text-sm"> */}
               {/* <a href="#" className="font-medium text-teal-600 hover:text-teal-500">
                 Forgot your password?
               </a> */}
-            </div>
+            {/* </div>
           </div>
 
           <div>
@@ -106,7 +106,7 @@ const LoginForm = () => {
               Sign in
             </button>
           </div>
-        </form>
+        </form> */}
 
         <div className="mt-6">
           <div className="relative">

@@ -42,7 +42,7 @@ const Sidebar = () => {
     { icon: <FaStickyNote size={20} />, text: 'Personal Notes', to: '/dashboard/notes' },
     { icon: <FaStar size={20} />, text: 'Favorite Lists', to: '/dashboard/favorite-lists' },
     { icon: <FaChartLine size={20} />, text: 'Learning Progress', to: '/learning-progress' },
-    { icon: <FaGamepad size={20} />, text: 'Quizzes and Games', to: '/quizzes-games' },
+    { icon: <FaGamepad size={20} />, text: 'Quizzes and Games', to: '/dashboard/games/word-search' },
     { icon: <FaUsers size={20} />, text: 'Community Contributions', to: '/community' },
     { icon: <FaCog size={20} />, text: 'Settings', to: '/dashboard/setting' },
     { icon: <FaBell size={20} />, text: 'Notifications', to: '/notifications' },
